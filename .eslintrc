@@ -1,0 +1,39 @@
+{
+  "extends": "eslint:recommended",
+
+  "plugins": [
+    "mocha"
+  ],
+
+  "env": {
+    "browser": true,
+    "amd": true,
+    "node": true,
+    "mocha": true
+  },
+
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module"
+  },
+
+  "rules": {
+
+    // enable additional rules
+    "indent": ["error", 4],
+    "linebreak-style": ["error", "windows"],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
+
+    // require space before blocks
+    "space-before-blocks": ["error", "always"],
+
+    // override default options for rules from base configurations
+    "no-cond-assign": ["error", "always"],
+
+    // disable rules from base configurations
+    "no-console": "off",
+
+    "mocha/no-exclusive-tests": "error"
+  }
+}
