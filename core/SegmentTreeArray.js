@@ -1,15 +1,11 @@
-export class SegmentTree {
+export class SegmentTreeArray {
 
-    constructor(n, values) {
+    constructor(n, data) {
         this.size = n;
-        this.tree = [];
+        this.tree = Array.from({ length: this.size * 4 }, () => 0);
 
-        for(let i = 0; i < 4 * n; i++) {
-            this.tree.push(0);
-        }
-
-        if(values) {
-            this.values = values;
+        if(data) {
+            this.data = data;
         }
     }
 
@@ -17,7 +13,7 @@ export class SegmentTree {
         if(left > right) return;
 
         if(left == right) {
-            this.tree[currentNode] = this.values[left];
+            this.tree[currentNode] = this.data[left];
         } else {
             const mid = (left + right) >> 1;
 
@@ -33,6 +29,27 @@ export class SegmentTree {
         this.buildTree(1, 0, this.size - 1);
     }
 
+    updateTree(currentNode, index, data, left, right) {
+        if(left > right) return;
+
+        if(left === right) {
+            this.tree[currentNode] = data;
+        } else {
+            const mid = (left + right) >> 1;
+            if(index <= mid) {
+                this.updateTree(currentNode * 2, index, data, left, mid);
+            } else {
+                this.updateTree(currentNode * 2 + 1, index, data, mid + 1, right);
+            }
+
+            this.tree[currentNode] = this.tree[currentNode * 2] + this.tree[currentNode * 2 + 1];
+        }
+    }
+
+    update(index, data) {
+        this.updateTree(1, index, data, 0, this.size - 1);
+    }
+
     sumQuery(currentNode, leftBound, rightBound, left, right) {
         if(right < leftBound || left > rightBound) {
             return 0;
@@ -42,12 +59,12 @@ export class SegmentTree {
         } else {
             const mid = (left + right) >> 1;
 
-            const leftValue = 
+            const leftData = 
                 this.sumQuery(currentNode * 2, leftBound, rightBound, left, mid);
-            const rightValue = 
+            const rightData = 
                 this.sumQuery(currentNode * 2 + 1, leftBound, rightBound, mid + 1, right);
 
-            return leftValue + rightValue;
+            return leftData + rightData;
         }
     }
 
