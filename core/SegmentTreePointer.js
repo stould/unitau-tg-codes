@@ -25,12 +25,16 @@ export class SegmentTreePointer {
 
         const leftData = (root.left === null) ? 0 : root.left.data;
         const rightData = (root.right === null) ? 0 : root.right.data;
-
         root.data = leftData + rightData;
+        
         return root;
     }
 
     update(index, data) {
+        if(index >= this.size || index < 0) {
+            throw new Error('Index should lie between [' + 0 + ', ' + (this.size - 1) + ']');
+        }
+
         this.updateTree(this.root, index, data, 0, this.size - 1);
     }
 
@@ -38,6 +42,7 @@ export class SegmentTreePointer {
         if(root === null || right < leftBound || left > rightBound) {
             return 0;
         }
+
         if(left >= leftBound && right <= rightBound) {
             return root.data;
         } else {
@@ -53,6 +58,10 @@ export class SegmentTreePointer {
     }
 
     query(leftBound, rightBound) {
+        if(rightBound < leftBound) {
+            throw new Error('Left index cannot be greater than right index');
+        }
+
         return this.sumQuery(this.root, leftBound, rightBound, 0, this.size - 1);
     }
 }

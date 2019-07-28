@@ -47,6 +47,10 @@ export class SegmentTreeArray {
     }
 
     update(index, data) {
+        if(index >= this.size || index < 0) {
+            throw new Error('Index should lie between [' + 0 + ', ' + (this.size - 1) + ']');
+        }
+        
         this.updateTree(1, index, data, 0, this.size - 1);
     }
 
@@ -69,6 +73,10 @@ export class SegmentTreeArray {
     }
 
     query(leftBound, rightBound) {
+        if(rightBound < leftBound) {
+            throw new Error('Left index cannot be greater than right index');
+        }
+        
         return this.sumQuery(1, leftBound, rightBound, 0, this.size - 1);
     }
 }

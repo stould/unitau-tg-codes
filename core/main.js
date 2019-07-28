@@ -47,7 +47,6 @@ for(let times = queries; times > 0; times--) {
     const vPointer = treePointer.query(left, right);
     totalSegTreePointer += Date.now() - old;
     if(vAarray != vPointer) console.log('erro');
-    
 }
 
 console.log(totalSegTreeArray + ' ' + totalSegTreePointer);
