@@ -12,7 +12,7 @@ const updates = 500000;
 let totalSegTree = 0, totalImplicitSegTree = 0;
 
 let old = Date.now();
-let treeArray = new SegmentTree(n);
+let segTree = new SegmentTree(n);
 totalSegTree += Date.now() - old;
 
 old = Date.now();
@@ -25,7 +25,7 @@ for(let times = updates; times > 0; times--) {
     const value = 1;
 
     old = Date.now();
-    treeArray.update(pos, value);
+    segTree.update(pos, value);
     totalSegTree += Date.now() - old;
 
     old = Date.now();
@@ -40,13 +40,13 @@ for(let times = queries; times > 0; times--) {
     right = Math.max(left, right);
 
     old = Date.now();
-    const vAarray = treeArray.query(left, right);
+    const vSegTree = segTree.query(left, right);
     totalSegTree += Date.now() - old;
 
     old = Date.now();
-    const vPointer = implicitTree.query(left, right);
+    const vImplicitTree = implicitTree.query(left, right);
     totalImplicitSegTree += Date.now() - old;
-    if(vAarray != vPointer) console.log('erro');
+    if(vSegTree != vImplicitTree) console.log('erro');
     
 }
 
