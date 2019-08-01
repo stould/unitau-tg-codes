@@ -1,23 +1,23 @@
 //------ main.js ------
 
-import {SegmentTreeArray} from '../core/SegmentTreeArray';
+import {SegmentTree} from '../core/SegmentTree';
 import * as algorithms from '../core/NaiveAlgorithms';
-import { SegmentTreePointer } from '../core/SegmentTreePointer';
+import { ImplicitSegmentTree } from '../core/ImplicitSegmentTree';
 
 
-const n = 10000000;
+const n = 100000;
 const queries = 100000;
 const updates = 500000;
 
-let totalSegTreeArray = 0, totalSegTreePointer = 0;
+let totalSegTree = 0, totalImplicitSegTree = 0;
 
 let old = Date.now();
-let treeArray = new SegmentTreeArray(n);
-totalSegTreeArray += Date.now() - old;
+let treeArray = new SegmentTree(n);
+totalSegTree += Date.now() - old;
 
 old = Date.now();
-let treePointer = new SegmentTreePointer(n);
-totalSegTreePointer += Date.now() - old;
+let implicitTree = new ImplicitSegmentTree(n);
+totalImplicitSegTree += Date.now() - old;
 
 
 for(let times = updates; times > 0; times--) {
@@ -26,11 +26,11 @@ for(let times = updates; times > 0; times--) {
 
     old = Date.now();
     treeArray.update(pos, value);
-    totalSegTreeArray += Date.now() - old;
+    totalSegTree += Date.now() - old;
 
     old = Date.now();
-    treePointer.update(pos, value);
-    totalSegTreePointer += Date.now() - old;
+    implicitTree.update(pos, value);
+    totalImplicitSegTree += Date.now() - old;
 }
 
 for(let times = queries; times > 0; times--) {
@@ -41,13 +41,13 @@ for(let times = queries; times > 0; times--) {
 
     old = Date.now();
     const vAarray = treeArray.query(left, right);
-    totalSegTreeArray += Date.now() - old;
+    totalSegTree += Date.now() - old;
 
     old = Date.now();
-    const vPointer = treePointer.query(left, right);
-    totalSegTreePointer += Date.now() - old;
+    const vPointer = implicitTree.query(left, right);
+    totalImplicitSegTree += Date.now() - old;
     if(vAarray != vPointer) console.log('erro');
     
 }
 
-console.log(totalSegTreeArray + ' ' + totalSegTreePointer);
+console.log(totalSegTree + ' ' + totalImplicitSegTree);
