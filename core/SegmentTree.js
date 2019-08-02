@@ -15,7 +15,7 @@ export class SegmentTree {
         if(left == right) {
             this.tree[currentNode] = this.data[left];
         } else {
-            const mid = (left + right) >> 1;
+            const mid = (left + right) >> 1; // bitwise division
 
             this.buildTree(currentNode * 2, left, mid);
             this.buildTree(currentNode * 2 + 1, mid + 1, right);
