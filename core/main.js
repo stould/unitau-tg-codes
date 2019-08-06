@@ -1,13 +1,14 @@
 //------ main.js ------
 
 import {SegmentTree} from '../core/SegmentTree';
-import * as algorithms from '../core/NaiveAlgorithms';
+import * as algorithms from '../core/Algorithms';
 import { ImplicitSegmentTree } from '../core/ImplicitSegmentTree';
 
 
 const n = 100000;
-const queries = 100000;
+const queries = 500000;
 const updates = 500000;
+
 
 let totalSegTree = 0, totalImplicitSegTree = 0;
 
@@ -36,15 +37,15 @@ for(let times = updates; times > 0; times--) {
 for(let times = queries; times > 0; times--) {
     let left = Math.floor(Math.random() * n);
     let right = Math.floor(Math.random() * n);
-    left = Math.min(left, right);
-    right = Math.max(left, right);
+    const tleft = Math.min(left, right);
+    const tright = Math.max(left, right);
 
     old = Date.now();
-    const vSegTree = segTree.query(left, right);
+    const vSegTree = segTree.query(tleft, tright);
     totalSegTree += Date.now() - old;
 
     old = Date.now();
-    const vImplicitTree = implicitTree.query(left, right);
+    const vImplicitTree = implicitTree.query(tleft, tright);
     totalImplicitSegTree += Date.now() - old;
     if(vSegTree != vImplicitTree) console.log('erro');
     
