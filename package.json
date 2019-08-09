@@ -5,6 +5,7 @@
   "main": "core/index.js",
   "scripts": {
     "execute": "npx babel-node ./core/main.js",
+    "executekth": "npx babel-node ./core/k-th-problem/main.js",
     "test": "./node_modules/.bin/mocha --require @babel/register"
   },
   "author": "Vinicius Zibetti Resko",
