@@ -31,7 +31,7 @@ export class BinarySearchTree {
     inOrder(root) {
         if (root !== null) {
             this.inOrder(root.left);
-            console.log(root);
+            console.log(root.data);
             this.inOrder(root.right);
         }
     }

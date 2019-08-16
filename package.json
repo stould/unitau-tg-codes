@@ -6,6 +6,8 @@
   "scripts": {
     "execute": "npx babel-node ./core/main.js",
     "executekth": "npx babel-node ./core/k-th-problem/main.js",
+    "executebtree": "npx babel-node ./core/binary-tree/main.js",
+    "executelinkedlist": "npx babel-node ./core/linked-list/main.js",
     "test": "./node_modules/.bin/mocha --require @babel/register"
   },
   "author": "Vinicius Zibetti Resko",
