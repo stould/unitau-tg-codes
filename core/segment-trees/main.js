@@ -1,7 +1,7 @@
 //------ main.js ------
 
-import {SegmentTree} from './SegmentTree';
-import { ImplicitSegmentTree } from './ImplicitSegmentTree';
+import {SegmentTree} from './Segment-tree';
+import { ImplicitSegmentTree } from './Implicit-segment-tree';
 
 
 const n = 100000;
