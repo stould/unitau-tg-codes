@@ -4,7 +4,7 @@
   "description": "Codigos para meu trabalho de graduacao de Engenharia de Computacao",
   "main": "core/index.js",
   "scripts": {
-    "execute": "npx babel-node ./core/main.js",
+    "execute": "npx babel-node ./core/segment-trees/main.js",
     "executekth": "npx babel-node ./core/k-th-problem/main.js",
     "executebtree": "npx babel-node ./core/binary-tree/main.js",
     "executelinkedlist": "npx babel-node ./core/linked-list/main.js",

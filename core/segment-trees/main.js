@@ -1,8 +1,7 @@
 //------ main.js ------
 
-import {SegmentTree} from '../core/SegmentTree';
-import * as algorithms from '../core/Algorithms';
-import { ImplicitSegmentTree } from '../core/ImplicitSegmentTree';
+import {SegmentTree} from './SegmentTree';
+import { ImplicitSegmentTree } from './ImplicitSegmentTree';
 
 
 const n = 100000;

@@ -1,4 +1,4 @@
-import {TreeNode} from './binary-tree/TreeNode';
+import {TreeNode} from '../binary-tree/TreeNode';
 
 export class ImplicitSegmentTree {
 

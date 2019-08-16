@@ -1,7 +1,7 @@
 //------ main.js ------
 
 import {SegmentTree} from './SegmentTree';
-import * as algorithms from '../../core/Algorithms';
+import * as algorithms from './Naive-algorithm';
 
 let n = 1;
 const factor = 1.4;
