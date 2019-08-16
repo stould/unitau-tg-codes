@@ -31,7 +31,7 @@ export class SegmentTree {
     updateTree(currentNode, index, data, left, right) {
         if(left > right) return;
         if(left === right) {
-            this.tree[currentNode] = data; //leaft update
+            this.tree[currentNode] += data; //leaft update
         } else {
             const mid = (left + right) >> 1;
             if(index <= mid) {
@@ -49,8 +49,10 @@ export class SegmentTree {
         }
     }
 
-    update(index, data) {
-        this.updateTree(1, index, data, 0, this.size - 1);
+    updateRange(left, right, data) {
+        for(let i = left; i <= right; i++) {
+            this.updateTree(1, i, data, 0, this.size - 1);
+        }
     }
 
     sumQuery(currentNode, leftBound, rightBound, left, right) {

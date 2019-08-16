@@ -5,6 +5,7 @@
   "main": "core/index.js",
   "scripts": {
     "execute": "npx babel-node ./core/segment-trees/main.js",
+    "executelazyprop": "npx babel-node ./core/segment-trees/main-lazy-prop.js",
     "executekth": "npx babel-node ./core/k-th-problem/main.js",
     "executebtree": "npx babel-node ./core/binary-tree/main.js",
     "executelinkedlist": "npx babel-node ./core/linked-list/main.js",
