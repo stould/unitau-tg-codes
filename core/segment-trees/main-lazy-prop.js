@@ -6,7 +6,7 @@ import {SegmentTree} from './Segment-tree';
 let n = 1;
 const factor = 1.4;
 const top = 20000;
-let queries = 50000;
+const queries = 50000;
 
 while(n <= top) {
     let segTreeLazy = new SegmentTreeLazyPropagation(n);
