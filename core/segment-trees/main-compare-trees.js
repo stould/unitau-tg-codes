@@ -11,7 +11,6 @@ const updates = 500000;
 
 while(n <= top) {
 
-
     let totalSegTree = 0, totalImplicitSegTree = 0;
 
     let old = Date.now();
