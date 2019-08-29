@@ -6,5 +6,5 @@ Códigos para meu trabalho de graduação de Engenharia de Computação
 - Have npm installed.
 - Open a terminal and navigate to the main directory.
 - Type **npm install** to install the dependencies.
-- Type **npm run execute** to run main file and evalue an expression
+- Type **npm run SOMETHING**, check all possible executable files at package.json
 - Type **npm test** to run all tests
