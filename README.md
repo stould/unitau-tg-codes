@@ -3,6 +3,7 @@ Códigos para meu trabalho de graduação de Engenharia de Computação
 ## Data Structures:
 - Segment Tree implemented with arrays
 - Implicit Segment Tree
+- Segment Tree with Lazy Propagation
 - Persistent Segment Tree implemented with a struct Node
 
 ## Problems Solved:
