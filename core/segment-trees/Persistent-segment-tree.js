@@ -59,8 +59,7 @@ export class PersistentSegmentTree {
     }
 
     sumQuery(root, leftBound, rightBound, left, right) {
-        //special case, the current node is null
-        if(root === null || right < leftBound || left > rightBound) {
+        if(right < leftBound || left > rightBound) {
             return 0;
         }
 
