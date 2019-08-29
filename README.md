@@ -6,6 +6,11 @@ Códigos para meu trabalho de graduação de Engenharia de Computação
 - Segment Tree with Lazy Propagation
 - Persistent Segment Tree implemented with a struct Node
 
+## Other DS and Algorithms:
+- Linked List
+- Binary Tree
+- Binary Search
+
 ## Problems Solved:
 - K-th value non zero from left to right
 - Interval Sum and Interval Update
