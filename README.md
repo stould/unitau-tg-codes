@@ -1,5 +1,14 @@
 # Repositorio de codigos TG
 Códigos para meu trabalho de graduação de Engenharia de Computação
+## Data Structures:
+- Segment Tree implemented with arrays
+- Implicit Segment Tree
+- Persistent Segment Tree implemented with a struct Node
+
+## Problems Solved:
+- K-th value non zero from left to right
+- Interval Sum and Interval Update
+- How many diferent integers lie in an interval
 
 # Installation instructions
 
