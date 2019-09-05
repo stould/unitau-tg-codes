@@ -4,15 +4,13 @@ export class PersistentSegmentTree {
 
     constructor(n) {
         this.size = n;
-        this.GLOBAL_INDEX = 0;
         this.versions = [this.build(0, n - 1)];
-        
     }
 
     build(left, right) {
         let root = new TreeNode(0);
-        root.index = this.GLOBAL_INDEX++;
 
+        //not a leaf
         if(left !== right) {
             const mid = (left + right) >> 1;
             root.left = this.build(left, mid);
@@ -22,9 +20,8 @@ export class PersistentSegmentTree {
         return root;
     }
 
-    updateTree(oldRoot, index, data, left, right) {
+    insertTree(oldRoot, index, data, left, right) {
         let root = new TreeNode(oldRoot.data);
-        root.index = this.GLOBAL_INDEX++;
 
         const mid = (left + right) >> 1;
 
@@ -33,13 +30,17 @@ export class PersistentSegmentTree {
             return root;
         } else if (index <= mid) {
             //keep extending current segment tree
-            root.left = this.updateTree(oldRoot.left, index, data, left, mid);
+            root.left = this.insertTree(
+                oldRoot.left, index, data, left, mid
+            );
 
             //copying right subtree
             root.right = oldRoot.right;
         } else {
             //keep extending current segment tree
-            root.right = this.updateTree(oldRoot.right, index, data, mid+1, right);
+            root.right = this.insertTree(
+                oldRoot.right, index, data, mid+1, right
+            );
 
             //copying left subtree
             root.left = oldRoot.left;
@@ -50,9 +51,10 @@ export class PersistentSegmentTree {
         return root;
     }
 
-    update(index, data) {
-        let newRoot = this.updateTree(
-            this.versions[this.versions.length - 1], index, data, 0, this.size - 1
+    insert(index, data) {
+        const lastVersionIndex = this.versions.length - 1;
+        let newRoot = this.insertTree(
+            this.versions[lastVersionIndex], index, data, 0, this.size - 1
         );
         
         this.versions.push(newRoot);

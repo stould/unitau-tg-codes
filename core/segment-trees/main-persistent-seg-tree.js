@@ -2,7 +2,7 @@
 
 import {PersistentSegmentTree} from './Persistent-segment-tree';
 
-let n = 1939038;
+let n = 1;
 const factor = 1.4;
 const top = 10000000;
 while(n <= top) {
@@ -23,7 +23,7 @@ while(n <= top) {
             let pos = Math.floor(Math.random() * n);
 
             old = Date.now();
-            pSegTree.update(pos, 1);
+            pSegTree.insert(pos, 1);
             totalPerSegTree += Date.now() - old;
 
             totalVersions++;
