@@ -21,6 +21,7 @@ export class PersistentSegmentTree {
     }
 
     insertTree(oldRoot, index, data, left, right) {
+        //copying the current node from previus version
         let root = new TreeNode(oldRoot.data);
 
         const mid = (left + right) >> 1;
@@ -29,7 +30,7 @@ export class PersistentSegmentTree {
             root.data += data;
             return root;
         } else if (index <= mid) {
-            //keep extending current segment tree
+            //keep extending current version
             root.left = this.insertTree(
                 oldRoot.left, index, data, left, mid
             );
@@ -37,9 +38,9 @@ export class PersistentSegmentTree {
             //copying right subtree
             root.right = oldRoot.right;
         } else {
-            //keep extending current segment tree
+            //keep extending current version
             root.right = this.insertTree(
-                oldRoot.right, index, data, mid+1, right
+                oldRoot.right, index, data, mid + 1, right
             );
 
             //copying left subtree
@@ -80,6 +81,7 @@ export class PersistentSegmentTree {
     }
 
     query(version, leftBound, rightBound) {
-        return this.sumQuery(this.versions[version], leftBound, rightBound, 0, this.size - 1);
+        const root = this.versions[version];
+        return this.sumQuery(root, leftBound, rightBound, 0, this.size - 1);
     }
 }
