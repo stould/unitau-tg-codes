@@ -12,9 +12,9 @@ Códigos para meu trabalho de graduação de Engenharia de Computação
 - Binary Search
 
 ## Problems Solved:
-- K-th value non zero from left to right
+- K-th non zero value from left to right
 - Interval Sum and Interval Update
-- How many diferent integers lie in an interval
+- How many different integers lie in an interval
 
 # Installation instructions
 
