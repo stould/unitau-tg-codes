@@ -61,27 +61,30 @@ export class PersistentSegmentTree {
         this.versions.push(newRoot);
     }
 
-    sumQuery(root, bound, left, right) {
-        //all current subtree is greater than bound
-        if(left >= bound) {
+    sumQuery(root, L, left, right) {
+        //current subtree has elements >= than left
+        if(left >= L) {
             return 0;
-        }else if(right < bound) {
+        }else if(right < L) {//current subtree has all elements < L
             return root.data;
         } else {
             const mid = (left + right) >> 1;
-            const leftData = this.sumQuery(root.left, bound, left, mid);
-            const rightData = this.sumQuery(root.right, bound, mid + 1, right);
+            const leftData = this.sumQuery(root.left, L, left, mid);
+            const rightData = this.sumQuery(root.right, L, mid + 1, right);
             return leftData + rightData;
         }
     }
 
     query(leftBound, rightBound) {
+        //[0, rightBound]
         const rightRoot = this.versions[rightBound];
         const fullSum = this.sumQuery(rightRoot, leftBound, 0, this.size - 1);
         
+        //[0, leftBound - 1]
         const leftRoot = this.versions[leftBound - 1];
         const partialSum = this.sumQuery(leftRoot, leftBound, 0, this.size - 1);
 
+        //returns [0, rightBound] - [0, leftBound - 1]
         return fullSum - partialSum;
     }
 }

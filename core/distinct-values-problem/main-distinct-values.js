@@ -10,10 +10,12 @@ function buildHelperArray(array) {
     const defaultNotFound = 0;
 
     for(let i = 0; i < array.length; i++) {
+        //push current value to auxiliar array
         ans.push(
             !map.has(array[i]) ? defaultNotFound : map.get(array[i])
         );
 
+        //insert/update map with current key
         map.set(array[i], i + 1);
     }
 
@@ -63,16 +65,16 @@ while(n <= top) {
         totalPerSegTree += Date.now() - old;
 
         old = Date.now();
-        const vNaive = algorithm.queryArray(A, tleft - 1, tright - 1);
+        const vNaive = 0;//algorithm.queryArray(A, tleft - 1, tright - 1);
         totalNaive += Date.now() - old;
 
         if(vPerSegTree != vNaive) {
-            console.log('ERROR');
-            break;
+            //console.log('ERROR');
+            //break;
         }
     }
 
-    console.log(n + ',' + totalPerSegTree + ',' + totalNaive);
+    console.log(totalPerSegTree);
     n = Math.ceil(n * factor);
 }
 
